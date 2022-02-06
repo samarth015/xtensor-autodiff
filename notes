@@ -1,0 +1,115 @@
+
+
+implement operator overload as a double param template function to overcome operator asymmetry
+
+
+toposort
+trace_stack.new_trace() ???
+
+Start at tracer
+
+dz/dz = 1??? = done
+
+What is a gradient?
+Jacobian vector products
+Forward vs backward accumulation
+Fn -> Fm   if n > m  Forward   if  n < m Backward
+Optimal jacobian accumulation
+Source code transformations for compile time optimizations
+
+dynamic computational graph
+DCGs are build from scratch in every iteration. Can computations be boosted by building static computational graphs?
+Generating static graphs at compile time using template metaprogramming.
+find a way to construct graph once and then use it again and again instead of reconstructing it from scratch each time.
+rematerailization 
+
+What to do about overload redundancy? like function operator + (real,double) works same as method operator + (real)
+
+In tensors
+Let a one dimentional tensor (1,) * another tensor be like scalar multiplication. Let scalar multiplication overload reuse (1,) * tensor oveload.
+
+
+change eval_parents_grad type from void() to void(std::pair<node*>) where the pair is parents 
+0 parents - nullptr nullptr
+1 parents - par1 nullptr
+2 parents - par1 par2
+Each lambda will work on parents not captures
+
+the constructor of the renum will dynamically allocate a node, point to it and add it to the global buffer
+
+free memory! call destructor on all global buf pointers. Use smart pointers maybe.
+
+
+add an overload with normal nums
+
+shared pointer
+clean global buff after call 
+and set all parents to nullptr
+when calling clean set all parents to nullptr
+
+
+you can make lambdas a 3 node* taking func --> this and parents
+you can take them all as captures too
+
+would you calculate double derivative if you call backward twice.
+
+BEST THING ! if constexpr. Three ways to overload operators do it. 
+
+1) Have a (real,real) overload and a two double template overload. 
+2) Have a single double template and convert each arg to real before using it.
+3) Use if constexpr
+
+An alternate get_grad where we go recursively through all values and use if constexpr to selectively cast to real.
+
+
+ --- TO DO ---
+
+# overload operations with numbers as friends functions
+x add inequality operators
+# improve relus both 
+# seperate interface and implementation
+# turn this into a template
+# template type deduction
+# Add a type system to renum like float16 float32 float64
+# create header files.
+# create_node() creates shared ptr in nodeptr and buff
+# mark all operations as const
+# node constructor should use real_inner instead of double
+# replace all ptr with sh_ptr
+# Only pass child node* in lambda because it has both parents
+x maybe use reference to child to real_inner in lambdas rather than node*
+
+
+# Convert the exposed constructors and functions which work with ftypes to 2 parameter templates and convert the ftypes args of these to the required ftype. Infact replace all function overloads with double templates. Like power<T,U>(), here both T and U are converted to real type.  Consider defining these as friend functions since they are easier to implement and dont carry the heavy syntactic baggage.
+
+> auto decomposition on tuple returned by grad function
+
+
+
+
+
+> make a google doc for vague fuzzy design ideas
+> See if captures in lambda are a better idea. copies are avoided in double derivative.
+> use concepts and type checking create a float/real concept. should val in nodes be const
+> convert static vars into constexprs or static const with upper case
+> make a private function get_inner_real and substitute it for all this->ptr->num
+> maybe use get_node for node* contained within sh_ptr
+> maybe use minus_one as a real_inner than a real
+> Copy or ref for capture in power second_val.
+> Find ways to improve the typesystem. Making sure float32 is 4 bytes each time.
+
+
+
+
+ -- TO LEARN --
+
+> Multivariate calculus/ Jacobians/ Adjoints
+> compiler/linker
+> header files
+> cmake make
+> whats a build?
+> Unit testing. Catch and how to make your own.
+> How to document. Documentation frameworks.
+> UML diagrams. Object oriented design.
+
+
