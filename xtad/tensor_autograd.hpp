@@ -1,6 +1,3 @@
-#ifndef TENSOR_AUTODIFF__H_
-#define TENSOR_AUTODIFF__H_
-
 #include <xtensor.hpp>
 #include <xtensor-blas/xlinalg.hpp>
 #include <utility>
@@ -9,6 +6,8 @@
 #include <functional>
 #include <array>
 #include <tuple>
+#include <algorithm>
+#include <math.h>
 #include <algorithm>
 
 namespace xtad {
@@ -198,7 +197,3 @@ namespace xtad {
 	   */
 
 } 
-
-//#include "tensor_autograd.cpp"
-
-#endif

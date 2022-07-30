@@ -1,5 +1,6 @@
-#include <math.h>
-#include <algorithm>
+#ifndef TENSOR_AUTODIFF__H_
+#define TENSOR_AUTODIFF__H_
+
 #include "tensor_autograd.hpp"
 
 namespace xtad {
@@ -341,3 +342,5 @@ namespace xtad {
 	   }
 	   */
 }
+
+#endif
