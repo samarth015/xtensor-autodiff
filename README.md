@@ -24,8 +24,9 @@ A multivariate linear regression model has also been implemented by utilizing th
     	cout << p << q << r << s << z;
     }
 
-> value : {{ 5.}}  grad : {{ 410.}}
-> value : {{ 10.}} grad : {{ 55.}}
-> value : {{ 11.}} grad : {{ 50.}}
-> value : {{ 17.}} grad : {{ 20.}}
-> value : {{ 1390.}} grad :  1.
+> value : {{ 5.}}  grad : {{ 410.}}<br>
+> value : {{ 10.}} grad : {{ 55.}}<br>
+> value : {{ 11.}} grad : {{ 50.}}<br>
+> value : {{ 17.}} grad : {{ 20.}}<br>
+> value : {{ 1390.}} grad :  1.<br>
+
